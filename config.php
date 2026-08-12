@@ -1,23 +1,23 @@
 <?php
-// Configuración de la base de datos
+// Configuración simulada para que el bot no dé errores de conexión
 function getDbConfig() {
     return [
-        'host' => '://alwaysdata.com', // ⚠️ IMPORTANTE: Mira la nota abajo para cambiar esto
-        'username' => 'arturo',
-        'password' => '15112003Aa!',
-        'database' => 'arturo_dior'
+        'host' => '127.0.0.1',
+        'username' => 'root',
+        'password' => '',
+        'database' => 'test'
     ];
 }
 
-// Configuración de Telegram
+// Configuración de tu bot de Telegram
 function getBotToken() {
     return "5456276655:AAFt3u9hGVZxA72kBJrTc9W-Bmp7CWjLJBA";
 }
 
 function getOwnerId() {
-    return "TU_TELEGRAM_ID"; 
+    return "123456789"; 
 }
 
 function getGoogleTranslateApiKey() {
-    return "TU_API_KEY_DE_GOOGLE"; 
+    return ""; 
 }
