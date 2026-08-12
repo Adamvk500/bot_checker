@@ -1,22 +1,21 @@
-# Usamos una imagen que ya incluye Node.js de forma nativa
+# Traemos Node y Composer desde sus imágenes oficiales directamente
 FROM node:16-slim AS node
+FROM composer:2.2 AS composer
 FROM php:7.4-cli
 
-# Copiamos Node.js desde la imagen anterior sin descargar de internet
+# Copiamos Node.js y Composer al sistema principal sin descargar nada de internet
 COPY --from=node /usr/local /usr/local
+COPY --from=composer /usr/bin/composer /usr/bin/composer
 
-# Instalar unzip, git y la extensión mysqli necesaria para tu base de datos
+# Instalar unzip, git y la extensión mysqli necesaria para tu bot
 RUN apt-get update && apt-get install -y unzip git \
     && docker-php-ext-install mysqli \
     && rm -rf /var/lib/apt/lists/*
 
-# Instalar Composer para gestionar las dependencias del traductor
-RUN curl -sS https://getcomposer.org | php -- --install-dir=/usr/local/bin --filename=composer
-
 WORKDIR /usr/src/app
 COPY . .
 
-# Instalar los paquetes del traductor
+# Ahora Composer se ejecutará perfectamente sin fallar
 RUN cd traductor && composer install --no-dev --optimize-autoloader
 
 CMD [ "php", "./index.php" ]
