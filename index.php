@@ -32,7 +32,6 @@ require __DIR__ . '/Class_Base.php';
 require __DIR__ . '/bypass.php';
 require __DIR__ . '/NovaFormat.php';
 require __DIR__ . '/Gen_Card.php';
-require __DIR__ . '/vendor/vendor/autoload.php';
 require __DIR__ . "/Capsolver/vendor/autoload.php";
 
 use CapSolver\Solvers\Token\ReCaptchaV2;
