@@ -12,10 +12,11 @@ RUN apt-get update && apt-get install -y unzip git \
     && docker-php-ext-install mysqli \
     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /usr/src/app
+# Establecemos la ruta de la aplicación donde el bot espera que esté
+WORKDIR /home/arturo/www
 COPY . .
 
-# Ahora Composer se ejecutará perfectamente sin fallar
+# Instalar los paquetes del traductor en la ruta correcta
 RUN cd traductor && composer install --no-dev --optimize-autoloader
 
 CMD [ "php", "./index.php" ]
