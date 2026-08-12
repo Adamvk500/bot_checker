@@ -2,7 +2,7 @@
 // Configuración de la base de datos
 function getDbConfig() {
     return [
-        'host' => 'mysql-arturo.alwaysdata.net',
+        'host' => '://alwaysdata.com', // ⚠️ IMPORTANTE: Mira la nota abajo para cambiar esto
         'username' => 'arturo',
         'password' => '15112003Aa!',
         'database' => 'arturo_dior'
@@ -15,9 +15,9 @@ function getBotToken() {
 }
 
 function getOwnerId() {
-    return "TU_TELEGRAM_ID"; // Opcional: Cambia esto por tu ID numérico de Telegram si lo sabes
+    return "TU_TELEGRAM_ID"; 
 }
 
 function getGoogleTranslateApiKey() {
-    return "TU_API_KEY_DE_GOOGLE"; // Puedes dejarlo así si no usas la API de Google Translate
+    return "TU_API_KEY_DE_GOOGLE"; 
 }
