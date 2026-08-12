@@ -15,8 +15,8 @@ RUN apt-get update && apt-get install -y unzip git \
 WORKDIR /home/arturo/www
 COPY . .
 
-# Instalar dependencias del bot principal y del traductor
-RUN composer install --no-dev --optimize-autoloader
+# Instalar dependencias únicamente donde existen archivos composer.json
 RUN cd traductor && composer install --no-dev --optimize-autoloader
+RUN cd Capsolver && composer install --no-dev --optimize-autoloader
 
 CMD [ "php", "./index.php" ]
