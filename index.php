@@ -172,7 +172,7 @@ $q_msg = $query["message"]["reply_to_message"]["text"];
 //------------------------------- BD Class -------------------------------
 // ⚠️ CONFIGURACIÓN MOVIDA A config.php
 $dbConfig = getDbConfig();
-$base_bot = new Database($dbConfig['host'], $dbConfig['username'], $dbConfig['password'], $dbConfig['database']);
+// $base_bot = new Database($dbConfig['host'], $dbConfig['username'], $dbConfig['password'], $dbConfig['database']);
 //------------------------------- Finish -------------------------------
 
 #.... Roles ...#
