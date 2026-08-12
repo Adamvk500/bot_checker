@@ -1,22 +1,23 @@
-FROM node:16-slim AS node
-FROM composer:2.2 AS composer
-FROM php:7.4-cli
+<?php
+// Configuración de la base de datos
+function getDbConfig() {
+    return [
+        'host' => 'mysql-arturo.alwaysdata.net',
+        'username' => 'arturo',
+        'password' => '15112003Aa!',
+        'database' => 'arturo_dior'
+    ];
+}
 
-# Copiar Node y Composer
-COPY --from=node /usr/local /usr/local
-COPY --from=composer /usr/bin/composer /usr/bin/composer
+// Configuración de Telegram
+function getBotToken() {
+    return "5456276655:AAFt3u9hGVZxA72kBJrTc9W-Bmp7CWjLJBA";
+}
 
-# Instalar librerías del sistema
-RUN apt-get update && apt-get install -y unzip git \
-    && docker-php-ext-install mysqli \
-    && rm -rf /var/lib/apt/lists/*
+function getOwnerId() {
+    return "TU_TELEGRAM_ID"; // Opcional: Cambia esto por tu ID numérico de Telegram si lo sabes
+}
 
-# Configurar la ruta de Arturo
-WORKDIR /home/arturo/www
-COPY . .
-
-# Instalar dependencias únicamente donde existen archivos composer.json
-RUN cd traductor && composer install --no-dev --optimize-autoloader
-RUN cd Capsolver && composer install --no-dev --optimize-autoloader
-
-CMD [ "php", "./index.php" ]
+function getGoogleTranslateApiKey() {
+    return "TU_API_KEY_DE_GOOGLE"; // Puedes dejarlo así si no usas la API de Google Translate
+}
